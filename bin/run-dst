@@ -17,13 +17,13 @@ declare -a arr=("378160973" "369588618" "374550642" "396026892")
 
 for i in "${arr[@]}"
 do
-	echo "ServerModSetup(\""$i"\")"$'\n' >> ~/steamapps/DST/mods/dedicated_server_mods_setup.lua
+	echo "ServerModSetup(\""$i"\")" >> ~/steamapps/DST/mods/dedicated_server_mods_setup.lua
 done
 
 ## enable mods
 for i in "${arr[@]}"
 do
-	echo "ForceEnableMod(\"workshop-"$i"\")"$'\n' >> ~/steamapps/DST/mods/modsettings.lua
+	echo "ForceEnableMod(\"workshop-"$i"\")" >> ~/steamapps/DST/mods/modsettings.lua
 done
 
 cd ~/steamapps/DST/data
