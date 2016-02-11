@@ -12,5 +12,8 @@ if [[ ! -z "$SERVER_TOKEN" ]]; then
 	echo -ne "$SERVER_TOKEN" > /DST/server_token.txt
 fi
 
+\cp /usr/local/bin/modoverrides.lua /DST
+\cp /usr/local/bin/dedicated_server_mods_setup.lua ~/steamapps/DST/mods
+
 cd ~/steamapps/DST/data
 ../bin/dontstarve_dedicated_server_nullrenderer $@

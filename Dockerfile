@@ -8,7 +8,7 @@ RUN dpkg --add-architecture i386 && apt-get update \
 RUN useradd -u 10999 -m steam
 RUN mkdir /DST \
   && chown steam:steam /DST \
-  && mkdir -p /home/steam/.klei/DoNotStarveTogether \
+  && mkdir -p /home/steam/.klei \
   && chown -R steam:steam /home/steam/.klei
 
 USER steam
@@ -18,11 +18,9 @@ RUN cd  ~/steamcmd && curl -SLO "http://media.steampowered.com/installer/steamcm
   && tar -xvf steamcmd_linux.tar.gz -C ~/steamcmd && rm steamcmd_linux.tar.gz
 RUN ~/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/steamapps/DST +app_update 343050 validate +quit
 
-COPY ./config/modoverrides.lua /home/steam/.klei/DoNotStarveTogether
-COPY ./config/dedicated_server_mods_setup.lua /home/steam/steamapps/DST/mods
-
 USER root
 ADD ./bin/* /usr/local/bin/
+ADD ./config/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/run-dst
 
 USER steam
